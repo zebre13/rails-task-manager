@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.task_list p {
-  display: inline;
+#tasks {
+  padding-left: 0;
+  list-style-type: none;
 }

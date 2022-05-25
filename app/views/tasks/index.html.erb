@@ -1,31 +1,24 @@
 <h1>My tasks</h1>
 
-<% @tasks.each do |task| %>
-  <p>
-    <%= link_to task.title, task_path(task) %>
-  </p>
+<ul id="tasks">
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed %>
+        <i class="fa fa-check-square-o"></i>
+      <% else %>
+        <i class="fa fa-square-o"></i>
+      <% end %>
+      <%= link_to task.title, task_path(task.id) %>
+      ·
+      <%= link_to task_path(task.id), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= link_to new_task_path do %>
+  <i class="fa fa-plus"></i> Add a new task
 <% end %>
-
-<p>
-  <%= link_to 'Create a new task', new_task_path %>
-</p>
-
-<%# @tasks.each do |task| %>
-<%# <div class='task_list'> %>
-  <%# <p> %>
-    <%# if task.completed %>
-      <%#= "Checked" %>
-    <%# else %>
-      <%#= "Unchecked" %>
-    <%# end %>
-  <%# </p> %>
-  <%# <p> %>
-    <%#= link_to task.title, task_path(task) %>
-  <%# </p> %>
-  <%# <p> . </p> %>
-  <%# <p> %>
-    <%#= link_to '🗑', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
-  <%# </p> %>
-<%# </div> %>
-<%# end %>
-<%# <br> %>
